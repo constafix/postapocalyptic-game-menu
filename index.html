@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-  <title>REMNANTS — Main Menu</title>
+  <title>ASHBORNE — Main Menu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -208,8 +208,8 @@
 
     <div class="content">
       <div class="title-wrapper">
-        <div class="title">REMNANTS</div>
-        <div class="subtitle">of the old world</div>
+        <div class="title">ASHBORNE</div>
+        <div class="subtitle">no dawn without ashes</div>
       </div>
 
       <div class="divider"></div>
@@ -325,12 +325,17 @@
       return p;
     }
 
-    // Start regular particles from bottom with slight stagger
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      gsap.delayedCall(Math.random() * 6, () => {
+    // Spawn particles evenly over time using a steady interval
+    let spawned = 0;
+    const spawnInterval = 0.3; // seconds between each particle
+    function spawnNext() {
+      if (spawned < PARTICLE_COUNT) {
         particles.push(createParticle());
-      });
+        spawned++;
+        gsap.delayedCall(spawnInterval, spawnNext);
+      }
     }
+    spawnNext();
 
     function drawParticles() {
       ctx.clearRect(0, 0, W, H);
