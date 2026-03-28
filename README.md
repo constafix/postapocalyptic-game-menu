@@ -2,7 +2,7 @@
 
 A cinematic, single-screen main menu concept for a post-apocalyptic game — built entirely with vanilla HTML, CSS, and JavaScript.
 
-![preview](background.png)
+![preview](image.png)
 
 ---
 
